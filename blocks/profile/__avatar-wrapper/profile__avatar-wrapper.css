@@ -1,4 +1,11 @@
 .profile__avatar-wrapper {
-  position: relative;
-  margin-right: 30px;
- }
+  display: flex;
+  margin: 0;
+}
+
+@media screen and (max-width: 920px) {
+  .profile__avatar-wrapper {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}

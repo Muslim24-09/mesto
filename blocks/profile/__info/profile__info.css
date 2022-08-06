@@ -1,0 +1,5 @@
+.profile__info {
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+}

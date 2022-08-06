@@ -1,0 +1,23 @@
+.profile__editor {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	outline: none;
+	border: 1px solid white;
+	margin-top: 11px;
+}
+
+.profile__editor:hover {
+	opacity: .5;
+	transition-duration: 1.5s;
+}
+
+@media screen and (max-width: 920px) {
+	.profile__editor {
+		width: 18px;
+		height: 15px;
+		margin-top: 13px;
+	}
+}
