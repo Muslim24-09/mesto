@@ -6,7 +6,7 @@ const likeBtn = document.querySelectorAll('.element__like')
 const nameInput = document.querySelector('.form__input_type_name')
 const aboutInput = document.querySelector('.form__input_type_about')
 
-const submitBtn = document.querySelector('.form__save-button')
+const formEditor = document.querySelectorAll('.form')
 const profileName = document.querySelector('.profile__name')
 const profileAbout = document.querySelector('.profile__about')
 
