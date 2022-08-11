@@ -1,13 +1,7 @@
 .page {
-	background-color: #000;
-	margin: 0 auto;
-	font-family: 'Inter', 'Arial', sans-serif;
-	box-sizing: border-box;
-	padding-top: 45px;
-}
-
-@media screen and (max-width: 920px) {
-	.page {
-		padding-top: 27px;
-	}
+  background: #000;
+  font-family: 'Inter', 'Arial', sans-serif;
+  text-rendering: optimizeLegibility;
+  margin-left: calc(100vw - 100%);
+  margin-right: 0;
 }
