@@ -1,12 +1,14 @@
-const popup = document.querySelector('.popup')
-const editBtn = document.querySelector('.profile__editor')
-const closeBtn = document.querySelector('.popup__close-button')
-const likeBtn = document.querySelectorAll('.element__like')
+const popup = document.querySelector('.popup')///попап
+const editBtn = document.querySelector('.profile__edit-button')///иконка редактора
+const closeBtn = document.querySelector('.popup__close-button')///крестик 
+const formSaveButton = document.querySelector('.form__save-button');///сохранить
 
-const nameInput = document.querySelector('.form__input_type_name')
-const aboutInput = document.querySelector('.form__input_type_about')
 
-const formEditor = document.querySelectorAll('.form')
+const nameInput = document.querySelector('.form__input_type_name')///доступ к значению
+const aboutInput = document.querySelector('.form__input_type_about')///доступ к значению
+
+const formEditor = document.querySelector('.form')///редактирование форм
+
 const profileName = document.querySelector('.profile__name')
 const profileAbout = document.querySelector('.profile__about')
 
@@ -15,33 +17,20 @@ aboutInput.defaultValue = profileAbout.textContent
 
 editBtn.addEventListener('click', function () {
 	popup.classList.add('popup_opened')
+	document.body.style.overflow = 'hidden';
 })
 
 closeBtn.addEventListener('click', function () {
 	popup.classList.remove('popup_opened')
+	document.body.style.overflow = 'auto';
+	aboutInput.value = profileAbout.textContent
+	nameInput.value = profileName.textContent
 })
 
-for (let i = 0; i < likeBtn.length; i += 1) {
-	likeBtn[i].addEventListener('click', function () {
-		if (likeBtn[i].classList.contains('element__like_active') === true) {
-			likeBtn[i].classList.remove('element__like_active')
-		} else {
-			likeBtn[i].classList.add('element__like_active')
-		}
-	})
-}
-
-submitBtn.addEventListener('click', function() {
-	if(nameInput.value.length > 0 && aboutInput.value.length > 0) {
-		profileName.textContent = nameInput.value
-		profileAbout.textContent = aboutInput.value
-		popup.classList.remove('popup_opened')
-	} else {
-		alert('ПОЖАЛУЙСТА, ЗАПОЛНИТЕ ОБА ПОЛЯ')
-	}
-	
+formEditor.addEventListener('submit', function (e) {
+	e.preventDefault();
+	profileAbout.textContent = e.target.elements.about.value
+	profileName.textContent = e.target.elements.name.value
+	popup.classList.remove('popup_opened');
 })
-  
-
-
 

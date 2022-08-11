@@ -17,10 +17,10 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 880px) {
   .form__save-button {
     font-size: 14px;
-    line-height: 16px;
+    line-height: 17px;
     margin: 45px 0 0;
   }
 }
