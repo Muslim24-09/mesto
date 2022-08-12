@@ -17,12 +17,12 @@ aboutInput.defaultValue = profileAbout.textContent
 
 editBtn.addEventListener('click', function () {
 	popup.classList.add('popup_opened')
-	document.body.style.overflow = 'hidden';
+	// document.body.style.overflow = 'hidden';
 })
 
 closeBtn.addEventListener('click', function () {
 	popup.classList.remove('popup_opened')
-	document.body.style.overflow = 'auto';
+	// document.body.style.overflow = 'auto';
 	aboutInput.value = profileAbout.textContent
 	nameInput.value = profileName.textContent
 })
