@@ -1,4 +1,3 @@
-const popup = document.querySelectorAll('.popup')
 const popupProfile = document.querySelector('#popup-profile')
 const editBtn = document.querySelector('.profile__edit-button')
 const closeBtn = document.querySelector('.popup__close-button')
@@ -41,11 +40,14 @@ editBtn.addEventListener('click', function () {
   openPopup(popupProfile)
 })
 
-closeBtn.addEventListener('click', function () {
-  closePopup(popupProfile)
-  aboutInput.value = profileAbout.textContent
-  nameInput.value = profileName.textContent
-})
+const closeButtons = document.querySelectorAll ('.popup__close-button')
+closeButtons.forEach((button) => {
+  
+  const popup = button.closest('.popup');
+ 
+  button.addEventListener('click', () => closePopup(popup));
+});
+
 
 formEditor.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -57,10 +59,6 @@ formEditor.addEventListener('submit', function (e) {
 
 addBtn.addEventListener('click', function () {
   openPopup(popupAction)
-})
-
-closeBtnAct.addEventListener('click', function () {
-  closePopup(popupAction)
 })
 
 function cardCreater(data) {
@@ -83,16 +81,10 @@ formCreator.addEventListener('submit', function addCard(event) {
     link: event.target.elements.link.value
   }
 
-  closeBtnAct.addEventListener('click', function () {
-    closePopup(popupAction)
-    event.target.reset()
-  })
-
   const card = cardCreater(myCard)
   elements.prepend(card)
   event.target.reset()
   closePopup(popupAction)
-
 })
 
 for (let i = 0; i < addingPictures.length; i += 1) {
@@ -131,8 +123,3 @@ elements.addEventListener('click', function (event) {
     pictures.alt = `Фотография: ${title.textContent}`
   }
 })
-
-closeBtnpic.addEventListener('click', function () {
-  closePopup(popupPictures)
-})
-
