@@ -1,4 +1,5 @@
-const popup = document.querySelector('.popup')
+const popup = document.querySelectorAll('.popup')
+const popupProfile = document.querySelector('#popup-profile')
 const editBtn = document.querySelector('.profile__edit-button')
 const closeBtn = document.querySelector('.popup__close-button')
 const formSaveButton = document.querySelector('.form__save-button');
@@ -10,28 +11,6 @@ const formCreator = document.querySelector('[name="add__profile"]')
 const profileName = document.querySelector('.profile__name')
 const profileAbout = document.querySelector('.profile__about')
 const elements = document.querySelector('.elements')
-
-nameInput.defaultValue = profileName.textContent
-aboutInput.defaultValue = profileAbout.textContent
-
-editBtn.addEventListener('click', function () {
-  popup.classList.add('popup_opened')
-
-})
-
-closeBtn.addEventListener('click', function () {
-  popup.classList.remove('popup_opened')
-  aboutInput.value = profileAbout.textContent
-  nameInput.value = profileName.textContent
-})
-
-formEditor.addEventListener('submit', function (e) {
-  e.preventDefault();
-  profileAbout.textContent = e.target.elements.about.value
-  profileName.textContent = e.target.elements.name.value
-  popup.classList.remove('popup_opened');
-})
-
 const popupAction = document.querySelector('#popup-action')
 const addBtn = document.querySelector('.profile__add-button')
 const closeBtnAct = document.querySelector('.popup__close-button_action')
@@ -40,20 +19,51 @@ const titleInput = document.querySelector('.form__input_type_title')
 const linkInput = document.querySelector('.form__input_type_link')
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
+const popupPictures = document.querySelector('#pictures-popup')
+const picturesBtn = document.querySelector('.element__image')
+const closeBtnpic = document.querySelector('.popup__close-button_pictures')
+const contPic = document.querySelector('.popup__container_pictures')
+const titlePic = document.querySelector('.popup__pictures-title')
+const pictures = document.querySelector('.popup__pictures')
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+nameInput.defaultValue = profileName.textContent
+aboutInput.defaultValue = profileAbout.textContent
+
+editBtn.addEventListener('click', function () {
+  openPopup(popupProfile)
+})
+
+closeBtn.addEventListener('click', function () {
+  closePopup(popupProfile)
+  aboutInput.value = profileAbout.textContent
+  nameInput.value = profileName.textContent
+})
+
+formEditor.addEventListener('submit', function (e) {
+  e.preventDefault();
+  profileAbout.textContent = e.target.elements.about.value
+  profileName.textContent = e.target.elements.name.value
+  closePopup(popupProfile)
+})
 
 
 addBtn.addEventListener('click', function () {
-  popupAction.classList.add('popup_opened')
+  openPopup(popupAction)
 })
 
 closeBtnAct.addEventListener('click', function () {
-  popupAction.classList.remove('popup_opened')
-  titleInput.value = ''
-  linkInput.value = ''
+  closePopup(popupAction)
 })
 
-
-function Cardcreater(data) {
+function cardCreater(data) {
   const cardTemplate = document.querySelector('.element__template').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
@@ -73,15 +83,20 @@ formCreator.addEventListener('submit', function addCard(event) {
     link: event.target.elements.link.value
   }
 
-  addingPictures.push(myCard)
-  const card = Cardcreater(myCard)
+  closeBtnAct.addEventListener('click', function () {
+    closePopup(popupAction)
+    event.target.reset()
+  })
+
+  const card = cardCreater(myCard)
   elements.prepend(card)
   event.target.reset()
-  popupAction.classList.remove('popup_opened')
+  closePopup(popupAction)
+
 })
 
 for (let i = 0; i < addingPictures.length; i += 1) {
-  elements.append(Cardcreater(addingPictures[i]))
+  elements.append(cardCreater(addingPictures[i]))
 }
 
 elements.addEventListener('click', (event) => {
@@ -99,21 +114,11 @@ elements.addEventListener('click', (event) => {
   }
 })
 
-
-
-const popupPictures = document.querySelector('#pictures-popup')
-const picturesBtn = document.querySelector('.element__image')
-const closeBtnpic = document.querySelector('.popup__close-button_pictures')
-const contPic = document.querySelector('.popup__container_pictures')
-const titlePic = document.querySelector('.popup__pictures-title')
-const pictures = document.querySelector('.popup__pictures')
-
-
 elements.addEventListener('click', function (event) {
   const target = event.target
 
   if (target && target.classList.contains('element__image')) {
-    popupPictures.classList.add('popup_opened')
+    openPopup(popupPictures)
 
     const parent = event.target.closest('.element')
     const title = parent.querySelector('.element__title')
@@ -121,11 +126,13 @@ elements.addEventListener('click', function (event) {
     titlePic.textContent = title.textContent
 
     const picture = target.closest('.element__image')
+
     pictures.src = picture.src
+    pictures.alt = `Фотография: ${title.textContent}`
   }
 })
 
 closeBtnpic.addEventListener('click', function () {
-  popupPictures.classList.remove('popup_opened')
+  closePopup(popupPictures)
 })
 
