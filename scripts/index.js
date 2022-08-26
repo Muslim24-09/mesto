@@ -38,6 +38,8 @@ aboutInput.defaultValue = profileAbout.textContent
 
 editBtn.addEventListener('click', function () {
   openPopup(popupProfile)
+  nameInput.value = profileName.textContent 
+  aboutInput.value = profileAbout.textContent 
 })
 
 const closeButtons = document.querySelectorAll ('.popup__close-button')
