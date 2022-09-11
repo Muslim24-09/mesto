@@ -1,3 +1,4 @@
+const popup = document.querySelector('.popup')
 const popupProfile = document.querySelector('#popup-profile')
 const editBtn = document.querySelector('.profile__edit-button')
 const closeBtn = document.querySelector('.popup__close-button')
@@ -25,6 +26,7 @@ const contPic = document.querySelector('.popup__container_pictures')
 const titlePic = document.querySelector('.popup__pictures-title')
 const pictures = document.querySelector('.popup__pictures')
 
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
@@ -36,19 +38,37 @@ function closePopup(popup) {
 nameInput.defaultValue = profileName.textContent
 aboutInput.defaultValue = profileAbout.textContent
 
+
+
 editBtn.addEventListener('click', function () {
   openPopup(popupProfile)
-  nameInput.value = profileName.textContent 
-  aboutInput.value = profileAbout.textContent 
+  nameInput.value = profileName.textContent
+  aboutInput.value = profileAbout.textContent
 })
 
 const closeButtons = document.querySelectorAll ('.popup__close-button')
 closeButtons.forEach((button) => {
-  
   const popup = button.closest('.popup');
- 
   button.addEventListener('click', () => closePopup(popup));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
 });
+
+const closePopupClick = () => {
+  const popupList = Array.from(document.querySelectorAll('.popup'));
+  popupList.forEach((popup) => {
+      popup.addEventListener('click', (evt) => {
+          if (evt.target == evt.currentTarget || evt.target.classList.contains('popup__close-button')) {
+              closePopup(evt.currentTarget);
+          }
+      })
+  })
+}
+closePopupClick();
 
 
 formEditor.addEventListener('submit', function (e) {
@@ -108,6 +128,7 @@ elements.addEventListener('click', (event) => {
   }
 })
 
+
 elements.addEventListener('click', function (event) {
   const target = event.target
 
@@ -125,3 +146,11 @@ elements.addEventListener('click', function (event) {
     pictures.alt = `Фотография: ${title.textContent}`
   }
 })
+
+enableValidation({
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  saveButtonSelector: '.form__save-button',
+  inactiveButtonClass: 'form__save-button_disabled',
+  inputErrorClass: 'form__input_type_error',
+});

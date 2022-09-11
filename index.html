@@ -2,85 +2,114 @@
 <html lang="ru">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="pages/index.css">
-	<title>место</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>место</title>
 </head>
 
 <body class="page">
-	<div class="page__container">
-		<header class="header">
-			<div class="header__logo"></div>
-		</header>
-		<main class="content">
-			<section class="profile">
-				<img src="./images/avatar.png" alt="Аватар пользователя" class="profile__avatar">
-				<div class="profile__info">
-					<h1 class="profile__name">Жак-Ив Кусто</h1>
-					<button type="button" class="profile__edit-button"></button>
-					<p class="profile__about">Исследователь океана</p>
-				</div>
-				<button type="button" class="profile__add-button"></button>
-			</section>
+  <div class="page__container">
+    <header class="header">
+      <div class="header__logo"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img src="./images/avatar.png" alt="Аватар пользователя" class="profile__avatar">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit-button"></button>
+          <p class="profile__about">Исследователь океана</p>
+        </div>
+        <button type="button" class="profile__add-button"></button>
+      </section>
 
-			<section class="elements">
-				<!--pictures.js-->
-			</section>
+      <section class="elements">
+        <!--pictures.js-->
+      </section>
 
-		</main>
-	</div>
+    </main>
+  </div>
 
-	<footer class="footer">
-		<p class="footer__copy">&copy; 2022 Место Россия</p>
-	</footer>
+  <footer class="footer">
+    <p class="footer__copy">&copy; 2022 Место Россия</p>
+  </footer>
 
-	<div class="popup" id="popup-profile">
-		<div class="popup__container">
-			<button type="button" class="popup__close-button"></button>
-			<h2 class="popup__title">Редактировать профиль</h2>
-			<form class="form" name="edit__profile">
-				<input type="text" name="name" placeholder="Имя" class="form__input form__input_type_name">
-				<input type="text" name="about" placeholder="Деятельность" class="form__input form__input_type_about">
-				<button type="submit" class="form__save-button">Сохранить</button>
-			</form>
-		</div>
-	</div>
 
-	<div class="popup" id="popup-action">
-		<div class="popup__container">
-			<button type="button" class="popup__close-button popup__close-button_action"></button>
-			<h2 class="popup__title">Новое место</h2>
-			<form class="form" name="add__profile">
-				<input type="text" name="title" placeholder="Название" class="form__input form__input_type_title">
-				<input type="text" name="link" placeholder="Ссылка на картинку" class="form__input form__input_type_link">
-				<button type="submit" class="form__save-button">Создать</button>
-			</form>
-		</div>
-	</div>
+  <div class="popup" id="popup-profile">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
 
-	<div class="popup popup_blackout" id="pictures-popup">
-		<div class="popup__container popup__container_pictures">
-			<button type="button" class="popup__close-button popup__close-button_pictures"></button>
-			<img class="popup__pictures">
-			<p class="popup__pictures-title"></p>
-		</div>
-	</div>
+      <form class="form" name="edit__profile">
 
-	<template class="element__template">
-		<div class="element">
-			<img class="element__image">
-			<div class="element__container">
-				<h2 class="element__title"></h2>
-				<button type="button" class="element__like-button"></button>
-			</div>
-			<button type="button" class="element__delete-button"></button>
-		</div>
-	</template>
+        <label class="form__field">
+        <input type="text" name="name" required placeholder="Имя"
+        class="form__input form__input_type_name" minlength="2" maxlength="40" novalidate>
+        <span class="form__error form__input-name-error"></span>
+        </label>
 
-	<script src="./scripts/pictures.js" defer></script>
-	<script src="./scripts/index.js" defer></script>
+        <label class="form__field">
+        <input type="text" name="about" required placeholder="Деятельность"
+        class="form__input form__input_type_about" minlength="2" maxlength="200" novalidate>
+        <span class="form__error form__input-about-error"></span>
+        </label>
+
+        <button type="submit" class="form__save-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <div class="popup" id="popup-action">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button popup__close-button_action"></button>
+      <h2 class="popup__title">Новое место</h2>
+
+      <form class="form" name="add__profile" novalidate>
+
+        <label class="form__field">
+        <input type="text" name="title" required placeholder = "Название"
+        class="form__input form__input_type_title" minlength="2" maxlength="30">
+        <span class="form__error form__input-title-error"></span>
+        </label>
+
+        <label class="form___field">
+        <input  type="url" name="link" required  placeholder = "Ссылка на картинку"
+        class="form__input form__input_type_link">
+        <span class="form__error form__input-link-error"></span>
+        </label>
+
+        <button type="submit" class="form__save-button">Создать</button>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="popup popup_blackout" id="pictures-popup">
+    <div class="popup__container popup__container_pictures">
+      <button type="button" class="popup__close-button popup__close-button_pictures"></button>
+      <img class="popup__pictures">
+      <p class="popup__pictures-title"></p>
+    </div>
+  </div>
+
+  <template class="element__template">
+    <div class="element">
+      <img class="element__image">
+      <div class="element__container">
+        <h2 class="element__title"></h2>
+        <button type="button" class="element__like-button"></button>
+      </div>
+      <button type="button" class="element__delete-button"></button>
+    </div>
+  </template>
+
+  <script src="./scripts/validate.js" defer></script>
+  <script src="./scripts/pictures.js" defer></script>
+  <script src="./scripts/index.js" defer></script>
 
 </body>
 
