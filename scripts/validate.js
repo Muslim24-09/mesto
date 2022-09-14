@@ -1,11 +1,3 @@
-// enableValidation({
-//   formSelector: '.form',
-//   inputSelector: '.form__input',
-//   saveButtonSelector: '.form__save-button',
-//   inactiveButtonClass: 'form__save-button_disabled',
-//   inputErrorClass: 'form__input_type_error',
-// });
-
 
 //Получаем массив всех форм
 function enableValidation(formData) {
@@ -96,18 +88,6 @@ function restartFormState(popup, formData) {
 function restartForm(form) {
   form.reset()
 }
-
-// функция сброса ошибок
-// function restartError(errorList, inputList, formData){
-//   errorList.forEach((errorElement) => {
-//     errorElement.textContent = "";
-
-// })
-
-// inputList.forEach((formInput) => {
-//     formInput.classList.remove(formData.inputErrorClass);
-// })
-// }
 
 // функция сброса ошибок
 function restartError(errorList, inputList, formData){
