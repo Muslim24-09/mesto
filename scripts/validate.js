@@ -1,4 +1,3 @@
-
 //Получаем массив всех форм
 function enableValidation(formData) {
   const formArr = Array.from(document.querySelectorAll(formData.formSelector))
@@ -12,7 +11,7 @@ function enableValidation(formData) {
   }
 }
 
-
+//функция, добавляющая обработчики всем полям формы
 function connectAllEventListeners(form, formInput, saveButton, inactiveSaveButton, inputErrorClass) {
   const inputArr = Array.from(form.querySelectorAll(formInput))
   const saveBtn = form.querySelector(saveButton)
@@ -37,6 +36,7 @@ function toggleSaveButtonStatus(inputArr, saveButton, inactiveSaveButton) {
   }
 }
 
+//функция для проверки валидности всех полей
 function checkInputValidity(inputArr) {
   for (let i = 0; i < inputArr.length; i++) {
     if (!inputArr[i].validity.valid) {
@@ -46,6 +46,7 @@ function checkInputValidity(inputArr) {
   return true;
 }
 
+//функция, проверяющая валидность
 function toggleInputError(form, inputElement, inputErrorClass) {
   const errorElement = form.querySelector(`.form__input-${inputElement.name}-error`)
 
@@ -59,10 +60,13 @@ function toggleInputError(form, inputElement, inputErrorClass) {
   }
 }
 
+// функция показа ошибки
 function showError(input, errorClass, errorElement) {
   input.classList.add(errorClass)
   errorElement.textContent = input.validationMessage
 }
+
+// функция сброса ошибок
 function hideError(input, errorClass, errorElement) {
   input.classList.remove(errorClass)
   errorElement.textContent = ''
