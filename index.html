@@ -42,7 +42,7 @@
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
 
-      <form class="form" name="edit__profile">
+      <form class="form form_profile" name="edit__profile">
 
         <label class="form__field">
           <input type="text" name="name" required placeholder="Имя" class="form__input form__input_type_name"
@@ -66,7 +66,7 @@
       <button type="button" class="popup__close-button popup__close-button_action"></button>
       <h2 class="popup__title">Новое место</h2>
 
-      <form class="form" name="add__profile" novalidate>
+      <form class="form form_card" name="add__profile" novalidate>
 
         <label class="form__field">
           <input type="text" name="title" required placeholder="Название" class="form__input form__input_type_title"
@@ -105,14 +105,8 @@
     </div>
   </template>
 
-  <script src="./scripts/validate.js" defer></script>
-  <script src="./scripts/pictures.js" defer></script>
-  <script src="./scripts/Card.js" defer type="module"></script>
+
   <script src="./scripts/index.js" defer type="module"></script>
-
-  <!-- <script src="./scripts/FormValidator.js" defer></script> -->
-
-
 </body>
 
 </html>
