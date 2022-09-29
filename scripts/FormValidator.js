@@ -9,6 +9,7 @@ export class FormValidator {
   _saveButton;
   _formError;
 
+
   constructor(params, classForm) {
     // все классы
     this._inputSelector = params.inputSelector;
@@ -36,14 +37,15 @@ export class FormValidator {
     }
   }
 
+
   _restartForm() {
-    this._classForm.reset()
+    this._classForm.reset();
   }
 
   restartFormState() {
     if (this._saveButton) {
-      this._restartError()
-      this._restartForm()
+      this._restartError();
+      this._restartForm();
     }
   }
 
@@ -99,10 +101,16 @@ export class FormValidator {
   }
 
   enableValidation() {
-    this._classForm.addEventListener('submit', (e) => {
-      e.preventDefault()
-    })
-
-    this._connectAllEventListeners()
+    this._connectAllEventListeners();
   }
 }
+
+
+
+
+// const disableSubmitButton = (openedPopup) => {
+// const cardSaveButton = openedPopup.querySelector(".form__save-button")
+// cardSaveButton.setAttribute('disabled', true);
+// cardSaveButton.classList.add("form__save-button_disabled")
+
+// }
