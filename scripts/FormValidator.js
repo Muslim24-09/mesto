@@ -28,15 +28,19 @@ export class FormValidator {
     this._saveButton = this._classForm.querySelector(this._saveButtonSelector); // кнопка формы
   }
 
-  _restartError() {
-    for (let i = 0; i < this._errorList.length; i++) {
-      this._errorList[i].textContent = ""
-    }
-    for (let i = 0; i < this._inputList.length; i++) {
-      this._inputList[i].classList.remove(this._errorClass)
-    }
+  _disableSubmitButton () {
+    this._saveButton.setAttribute('disabled', true);
+    this._saveButton.classList.add("form__save-button_disabled")
   }
 
+  _restartError() {
+    this._errorList.forEach((error) => {
+      error.textContent = ""
+    })
+    this._inputList.forEach((input) => {
+      input.classList.remove(this._errorClass)
+    })
+  }
 
   _restartForm() {
     this._classForm.reset();
@@ -44,8 +48,11 @@ export class FormValidator {
 
   restartFormState() {
     if (this._saveButton) {
+      this._disableSubmitButton()
+
       this._restartError();
       this._restartForm();
+
     }
   }
 
@@ -78,6 +85,7 @@ export class FormValidator {
         return false;
       }
     }
+
     return true;
   }
 
@@ -92,19 +100,18 @@ export class FormValidator {
   }
 
   _connectAllEventListeners() {
-    for (let i = 0; i < this._inputList.length; i++) {
-      this._inputList[i].addEventListener('input', () => {
-        this._toggleInputError(this._inputList[i])
+    this._inputList.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._toggleInputError(input)
         this._toggleSaveButtonStatus()
       })
-    }
+    })
   }
 
   enableValidation() {
     this._connectAllEventListeners();
   }
 }
-
 
 
 

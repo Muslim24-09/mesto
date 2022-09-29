@@ -60,13 +60,6 @@ profileValidator.enableValidation()
 const cardValidator = new FormValidator(formData, formCard)
 cardValidator.enableValidation()
 
-// const disableSubmitButton = (openedPopup) => {
-// const cardSaveButton = openedPopup.querySelector(".form__save-button")
-// cardSaveButton.setAttribute('disabled', true);
-// cardSaveButton.classList.add("form__save-button_disabled")
-
-// }
-
 // функция закрытия попапа клавишей escape
 const closePopupEsc = (evt) => {
   if (evt.key === 'Escape') {
@@ -99,9 +92,7 @@ editorBtn.addEventListener('click', function () {
 
   nameInput.value = profileName.textContent
   aboutInput.value = profileAbout.textContent
-  // disableSubmitButton(popupProfile)
-
-  })
+})
 
 //функция закрытия попапа по клику
 const popupCloseClick = () => {
@@ -126,7 +117,6 @@ formProfile.addEventListener('submit', function (e) {
 
 addtBtn.addEventListener('click', function () {
   openPopup(popupAction);
-  // disableSubmitButton(popupAction)
   profileValidator.restartFormState(popupAction);
   cardValidator.restartFormState(popupAction);
 
