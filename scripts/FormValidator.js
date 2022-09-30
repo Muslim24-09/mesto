@@ -28,7 +28,7 @@ export class FormValidator {
     this._saveButton = this._classForm.querySelector(this._saveButtonSelector); // кнопка формы
   }
 
-  _disableSubmitButton () {
+  _disableSubmitButton() {
     this._saveButton.setAttribute('disabled', true);
     this._saveButton.classList.add("form__save-button_disabled")
   }
@@ -42,17 +42,12 @@ export class FormValidator {
     })
   }
 
-  _restartForm() {
-    this._classForm.reset();
-  }
 
   restartFormState() {
     if (this._saveButton) {
       this._disableSubmitButton()
 
       this._restartError();
-      this._restartForm();
-
     }
   }
 
@@ -85,7 +80,6 @@ export class FormValidator {
         return false;
       }
     }
-
     return true;
   }
 
@@ -113,11 +107,3 @@ export class FormValidator {
   }
 }
 
-
-
-// const disableSubmitButton = (openedPopup) => {
-// const cardSaveButton = openedPopup.querySelector(".form__save-button")
-// cardSaveButton.setAttribute('disabled', true);
-// cardSaveButton.classList.add("form__save-button_disabled")
-
-// }

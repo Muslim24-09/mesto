@@ -67,28 +67,23 @@ const closePopupEsc = (evt) => {
     closePopup(openedPopup);
   }
 }
+
 //функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
 }
 
-
 //функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
-
-  profileValidator.restartFormState(popupProfile);
-  cardValidator.restartFormState(popupAction);
-
-  formCard.reset();
-
 }
 
 //фукция открытия попапа профиля по клику
 editorBtn.addEventListener('click', function () {
   openPopup(popupProfile)
+  profileValidator.restartFormState();
 
   nameInput.value = profileName.textContent
   aboutInput.value = profileAbout.textContent
@@ -97,9 +92,10 @@ editorBtn.addEventListener('click', function () {
 //функция закрытия попапа по клику
 const popupCloseClick = () => {
   const popupList = Array.from(document.querySelectorAll('.popup'));
+
   popupList.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
-      if (evt.target == evt.currentTarget || evt.target.classList.contains('popup__close-button')) {
+      if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-button')) {
         closePopup(evt.currentTarget);
       }
     })
@@ -117,9 +113,8 @@ formProfile.addEventListener('submit', function (e) {
 
 addtBtn.addEventListener('click', function () {
   openPopup(popupAction);
-  profileValidator.restartFormState(popupAction);
-  cardValidator.restartFormState(popupAction);
-
+  cardValidator.restartFormState();
+  formCard.reset();
 })
 
 const showPopupHandler = (name, link) => {
@@ -147,6 +142,6 @@ formCreator.addEventListener('submit', function addCard(event) {
   closePopup(popupAction)
 })
 
-for (let i = 0; i < addingPictures.length; i += 1) {
-  elementsContainer.append(createCard(addingPictures[i]))
-}
+addingPictures.forEach((picture) => {
+  elementsContainer.append(createCard(picture))
+})
