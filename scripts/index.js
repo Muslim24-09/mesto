@@ -83,10 +83,10 @@ function closePopup(popup) {
 //фукция открытия попапа профиля по клику
 editorBtn.addEventListener('click', function () {
   openPopup(popupProfile)
-  profileValidator.restartFormState();
-
   nameInput.value = profileName.textContent
   aboutInput.value = profileAbout.textContent
+
+  profileValidator.restartFormState();
 })
 
 //функция закрытия попапа по клику
@@ -113,8 +113,8 @@ formProfile.addEventListener('submit', function (e) {
 
 addtBtn.addEventListener('click', function () {
   openPopup(popupAction);
-  cardValidator.restartFormState();
   formCard.reset();
+  cardValidator.restartFormState();
 })
 
 const showPopupHandler = (name, link) => {

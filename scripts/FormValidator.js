@@ -30,7 +30,7 @@ export class FormValidator {
 
   _disableSubmitButton() {
     this._saveButton.setAttribute('disabled', true);
-    this._saveButton.classList.add("form__save-button_disabled")
+    this._saveButton.classList.add(this._inactiveButtonClass)
   }
 
   _restartError() {
@@ -85,8 +85,7 @@ export class FormValidator {
 
   _toggleSaveButtonStatus() {
     if (!this._checkInputValidity()) {
-      this._saveButton.disabled = true;
-      this._saveButton.classList.add(this._inactiveButtonClass)
+      this._disableSubmitButton()
     } else {
       this._saveButton.disabled = false;
       this._saveButton.classList.remove(this._inactiveButtonClass)
