@@ -9,8 +9,6 @@ import { addingPictures, formData, editorBtn, nameInput, aboutInput, addtBtn, fo
 
 import './index.css';
 
-
-
 const picturePopup = new PicturePopup('#pictures-popup')
 picturePopup.setEventListeners()
 
@@ -42,10 +40,9 @@ cardValidator.enableValidation()
 
 section.renderItems()
 
-
- function setUserInfoValues({userName, about}){
+function setUserInfoValues({ userName, about }) {
   nameInput.value = userName;
-   aboutInput.value = about;
+  aboutInput.value = about;
 }
 //фукция открытия попапа профиля по клику
 editorBtn.addEventListener('click', function () {
@@ -56,7 +53,6 @@ editorBtn.addEventListener('click', function () {
 
 addtBtn.addEventListener('click', function () {
   popupSubmitCard.open()
-  formCard.reset();
   cardValidator.resetValidation();
 })
 

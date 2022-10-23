@@ -1,16 +1,12 @@
 export class Card {
-  _imgSrc;
-  _title;
+  _data;
   _templateSelector;
-  _showPopupHandler;
+  _handleCardClick;
   _cardElement;
-  _likeBtn;
-  _cardImage;
-  _deleteBtn;
 
   constructor(data, templateSelector, handleCardClick) {
     this._imgSrc = data.link;
-    this._title = data.name;
+    this._name = data.name;
     this._templateSelector = templateSelector;
     this._showPopupHandler = handleCardClick;
   }
@@ -18,26 +14,14 @@ export class Card {
   generateCard() {
     this._cardElement = this._getTemplate();
 
-    this._cardImage = this._cardElement.querySelector('.element__image');
-    this._deleteBtn = this._cardElement.querySelector(".element__delete-button");
-
-    this._cardImage.src = this._imgSrc;
-    this._cardImage.alt = `Фотография: ${this._title}`;
-
-    const cardTitle = this._cardElement.querySelector('.element__title');
-    cardTitle.textContent = this._title;
-
-    this._likeBtn = this._cardElement.querySelector(".element__like-button");
+    const cardImage = this._cardElement.querySelector('.element__image');
+    cardImage.src = this._imgSrc;
+    cardImage.alt = `Фотография: ${this._name}`;
+    this._cardElement.querySelector('.element__title').textContent = this._name;
 
     this._setEventListeners();
 
     return this._cardElement;
-  }
-
-  _setEventListeners() {
-    this._cardImage.addEventListener('click', () => this._showPopupHandler(this._title, this._imgSrc));
-    this._deleteBtn.addEventListener("click", () => this._removeHandler());
-    this._likeBtn.addEventListener("click", () => this._likeHandler());
   }
 
   _getTemplate() {
@@ -47,11 +31,25 @@ export class Card {
   }
 
   _likeHandler() {
-    this._likeBtn.classList.toggle('element__like-button_active');
+
+    this._cardElement.querySelector(".element__like-button").classList.toggle('element__like-button_active');
   }
 
   _removeHandler() {
     this._cardElement.remove();
     this._cardElement = null;
   }
+
+  _setEventListeners() {
+    this._cardElement.querySelector('.element__image').addEventListener('click', () => {
+      this._showPopupHandler(this._name, this._imgSrc)
+    })
+    this._cardElement.querySelector(".element__like-button").addEventListener('click', () => {
+      this._likeHandler()
+    })
+    this._cardElement.querySelector(".element__delete-button").addEventListener('click', () => {
+      this._removeHandler()
+    })
+  }
 }
+

@@ -23,7 +23,7 @@ export class FormValidator {
     this._classForm = classForm;
 
     this._inputList = Array.from(this._classForm.querySelectorAll(this._inputSelector)); // поиск всех инпутов формы
-    // this._errorList = Array.from(this._classForm.querySelectorAll(this._formError));
+
 
     this._saveButton = this._classForm.querySelector(this._saveButtonSelector); // кнопка формы
   }
@@ -34,6 +34,7 @@ export class FormValidator {
   }
 
   _restartError() {
+
     this._inputList.forEach((input) => {
       const errorElement = this._classForm.querySelector(`.form__input-${input.name}-error`)
       this._hideError(input, errorElement)
@@ -60,7 +61,6 @@ export class FormValidator {
 
   _toggleInputError(inputElement) {
     const errorElement = this._classForm.querySelector(`.form__input-${inputElement.name}-error`)
-
     if (!errorElement) {
       return;
     }

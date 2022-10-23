@@ -44,9 +44,9 @@
       <form class="form form_profile" name="edit__profile">
 
         <label class="form__field">
-          <input type="text" name="name" required placeholder="Имя" class="form__input form__input_type_name"
-            minlength="2" maxlength="40" novalidate>
-          <span class="form__error form__input-name-error"></span>
+          <input type="text" id="userName" name="userName" required placeholder="Имя"
+            class="form__input form__input_type_name" minlength="2" maxlength="40" novalidate>
+          <span class="form__error form__input-userName-error"></span>
         </label>
 
         <label class="form__field">
@@ -68,9 +68,9 @@
       <form class="form form_card" name="add__profile" novalidate>
 
         <label class="form__field">
-          <input type="text" name="title" id='name' required placeholder="Название"
+          <input type="text" name="name" id='name' required placeholder="Название"
             class="form__input form__input_type_title" minlength="2" maxlength="30">
-          <span class="form__error form__input-title-error"></span>
+          <span class="form__error form__input-name-error"></span>
         </label>
 
         <label class="form__field">
@@ -103,8 +103,6 @@
       <button type="button" class="element__delete-button"></button>
     </div>
   </template>
-
-
 
 </body>
 
