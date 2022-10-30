@@ -50,7 +50,7 @@
 @import url(../blocks/form/__error/form__error.css);
 @import url(../blocks/form/__save-button/_disabled/form__save-button_disabled.css);
 @import url(../blocks/form/__input/_type/form__input_type_error.css);
-@import url(../blocks/form/__save-button/__delitem/form__save-button__delitem.css);
+@import url(../blocks/form/__save-button/_delitem/form__save-button_delitem.css);
 
 
 @import url(../blocks/footer/footer.css);
