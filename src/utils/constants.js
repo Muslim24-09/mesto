@@ -51,8 +51,8 @@ export const aboutInput = document.querySelector('.form__input_type_about')
 // редактирование аватара
 
 export const profileAvatarBtn = document.querySelector('.profile__avatar-btn')
-export const popupChangeAvatar = document.querySelector('.popup__change-avatar')
-export const formChangeAvatar = document.querySelector('.form__change-avatar')
+export const popupChangeAvatar = document.querySelector('.popup_change-avatar')
+export const formChangeAvatar = document.querySelector('.form_change-avatar')
 
 
 // форма попапа

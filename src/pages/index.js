@@ -64,7 +64,7 @@ const popupProfile = new PopupWithForm('#popup-profile', (data) => {
 popupProfile.setEventListeners()
 
 // попап редактирования аватара
-const popupAvatar = new PopupWithForm('.popup__change-avatar', (avatar) => {
+const popupAvatar = new PopupWithForm('.popup_change-avatar', (avatar) => {
   popupAvatar.renderLoader(true)
   api.updateUserAvatar(avatar)
     .then((newData) => {
@@ -116,7 +116,7 @@ Promise.all([api.getUserInfo(), api.getAddingPictures()])
     section = new Section(startCards, (item) => {
       const newItem = new Card(item, userInfo.getUserId(), '.element__template', handleCardClick, handleOpenPopupConfirm, handleCardLike)
       return newItem.generateCard()
-    }, '.elements__wrapper')
+    }, '.elements-wrapper')
 
     section.renderItems()
 
