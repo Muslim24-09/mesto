@@ -1,12 +1,26 @@
-import Card from "../components/Card.js"; // класс карточек
-import { popupWithImage } from "../pages/index.js"; // импорт класса для использования публичного метода открытия попапа
+import { picturePopup, api, popupConfirm } from "../pages/index.js"; // импорт класса для использования публичного метода открытия попапа
 
-const handleCardClick = item => {
-    popupWithImage.open(item);
-}; // функция для открытия попапа картинки (передается в конструктор)
+export const handleCardClick = (item) => {
+  picturePopup.open(item);
+};
 
-export const createCard = item => {
-    const card = new Card(item.link, item.name, '.element__template', showPopupHandler());
+export const handleOpenPopupConfirm = (item) => {
+  popupConfirm.open(item)
+}
 
-    return card.generateCard();
-}; //функция создания карточки
+export const handleCardLike = (item) => {
+  if (item.myLike) {
+    api.dislikeItem(item.cardId)
+      .then((rez) => {
+        item.dislikeHandler(rez.likes.length)
+      })
+      .catch(err => console.error(err))
+  } else {
+    api.likeItem(item.cardId)
+      .then((rez) => {
+        item.likeHandler(rez.likes.length)
+      })
+      .catch(err => console.error(err))
+  }
+}
+

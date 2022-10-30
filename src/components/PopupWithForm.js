@@ -6,14 +6,18 @@ export class PopupWithForm extends Popup {
   _inputList
   _handleFormSubmit
   _formValues
+  _buttonSubmit
+  _defaultBtnName
 
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._popupForm = this.popup.querySelector(".form");
     this._inputList = this._popupForm.querySelectorAll(".form__input");
     this._handleFormSubmit = handleFormSubmit;
+    this._buttonSubmit = this._popupForm.querySelector('.form__save-button')
+    this._defaultBtnName = this._buttonSubmit.textContent
   }
-
+  // меняем id на name
   getInputValues() {
     this._formValues = {};
     this._inputList.forEach(input => {
@@ -34,5 +38,13 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     this._popupForm.reset();
+  }
+
+  renderLoader(isLoader) {
+    if (isLoader) {
+      this._buttonSubmit.textContent = 'Loading...'
+    } else {
+      this._buttonSubmit.textContent = this._defaultBtnName;
+    }
   }
 }

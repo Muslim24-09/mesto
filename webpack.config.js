@@ -14,9 +14,9 @@ module.exports = {
   },
   mode: "development",
   devServer: {
-    static: path.resolve(__dirname, './dist'),
+    static: path.resolve(__dirname, '/dist'),
     open: true,
-    port: 8888,
+    port: 3333,
   },
   module: {
     rules: [
@@ -41,6 +41,11 @@ module.exports = {
         type: 'asset/resource',
       },
     ]
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
   plugins:
     [

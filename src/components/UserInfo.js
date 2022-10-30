@@ -2,22 +2,39 @@ export class UserInfo {
 
   _name;
   _work;
+  _avatar;
+  _id;
 
-  constructor({ userName, about }) {
-    this._name = document.querySelector(userName);
+  constructor({ username, about, avatar }) {
+    this._name = document.querySelector(username);
     this._work = document.querySelector(about);
+    this._avatar = document.querySelector(avatar)
   }
 
   getUserInfo() {
     return {
-      userName: this._name.textContent,
+      username: this._name.textContent,
       about: this._work.textContent,
     };
   }
 
-  setUserInfo({ userName, about }) {
-    console.log(2222, { userName, about });
-    this._name.textContent = userName;
-    this._work.textContent = about;
+  setUserInfo(userInfo) {
+    this._name.textContent = userInfo.username;
+    this._work.textContent = userInfo.about;
+    this._avatar.src = userInfo.avatar;
+    this._id = userInfo._id
+  }
+
+  updateUserInfo(userInfo) {
+    this._name.textContent = userInfo.name;
+    this._work.textContent = userInfo.about
+  }
+
+  updateUserAvatar(userInfo) {
+    this._avatar.src = userInfo.avatar
+  }
+
+  getUserId() {
+    return this._id
   }
 }
