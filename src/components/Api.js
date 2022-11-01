@@ -1,10 +1,11 @@
 export class Api {
   _baseUrl;
-  _token;
+  _options;
 
-  constructor({ baseUrl, token }) {
+  constructor({ baseUrl, options }) {
+    console.log(333, options);
     this._baseUrl = baseUrl,
-      this._token = token
+      this._options = options
   }
 
   _checkResponse(rez) {
@@ -17,9 +18,7 @@ export class Api {
 
   getAddingPictures() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: `${this._token}` // свой ключ
-      }
+      headers: this._options
     })
       .then(rez => this._checkResponse(rez))
   }
@@ -27,10 +26,7 @@ export class Api {
   addItem({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
-      headers: {
-        authorization: `${this._token}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this._options,
       body: JSON.stringify({
         name: `${name}`,
         link: `${link}`
@@ -42,11 +38,7 @@ export class Api {
   removeItem(itemId) {
     return fetch(`${this._baseUrl}/cards/${itemId}`, {
       method: 'DELETE',
-      headers: {
-        authorization: `${this._token}`,
-        'Content-Type': 'application/json'
-      },
-
+      headers: this._options,
     })
       .then(rez => this._checkResponse(rez))
   }
@@ -54,9 +46,7 @@ export class Api {
   likeItem(itemId) {
     return fetch(`${this._baseUrl}/cards/${itemId}/likes`, {
       method: 'PUT',
-      headers: {
-        authorization: `${this._token}`
-      }
+      headers: this._options
     })
       .then(res => this._checkResponse(res));
   }
@@ -64,18 +54,14 @@ export class Api {
   dislikeItem(itemId) {
     return fetch(`${this._baseUrl}/cards/${itemId}/likes`, {
       method: 'DELETE',
-      headers: {
-        authorization: `${this._token}`
-      }
+      headers: this._options
     })
       .then(res => this._checkResponse(res));
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: {
-        authorization: `${this._token}`
-      }
+      headers: this._options
     })
       .then(rez => this._checkResponse(rez))
   }
@@ -83,10 +69,7 @@ export class Api {
   updateUserInfo({ username, about }) {
       return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: `${this._token}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this._options,
       body: JSON.stringify({
         name: `${username}`,
         about: `${about}`
@@ -98,10 +81,7 @@ export class Api {
   updateUserAvatar({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: `${this._token}`,
-        'Content-Type': 'application/json'
-      },
+      headers: this._options,
       body: JSON.stringify({
         avatar: `${avatar}`
       })

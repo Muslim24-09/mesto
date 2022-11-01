@@ -8,7 +8,6 @@ import { Api } from '../components/API.js';
 import { PopupConfirm } from '../components/PopupConfirm.js';
 
 import { formData, editorBtn, nameInput, aboutInput, addtBtn, formProfile, formCard, authorisationData, formChangeAvatar, profileAvatarBtn } from '../utils/constants.js';
-import { handleCardClick, handleCardLike, handleOpenPopupConfirm } from '../utils/utils.js'
 import './index.css';
 
 let section;
@@ -108,6 +107,30 @@ profileAvatarBtn.addEventListener('click', () => {
   popupAvatar.open()
   avatarValidator.resetValidation()
 })
+
+ const handleCardClick = (item) => {
+  picturePopup.open(item);
+};
+
+ const handleOpenPopupConfirm = (item) => {
+  popupConfirm.open(item)
+}
+
+ const handleCardLike = (item) => {
+  if (item.myLike) {
+    api.dislikeItem(item.cardId)
+      .then((rez) => {
+        item.dislikeHandler(rez.likes.length)
+      })
+      .catch(err => console.error(err))
+  } else {
+    api.likeItem(item.cardId)
+      .then((rez) => {
+        item.likeHandler(rez.likes.length)
+      })
+      .catch(err => console.error(err))
+  }
+}
 
 Promise.all([api.getUserInfo(), api.getAddingPictures()])
   .then(rez => {

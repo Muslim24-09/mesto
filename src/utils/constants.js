@@ -1,6 +1,8 @@
 export const authorisationData = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-52', token:
-    '4d3c9e1d-cc98-4110-97fa-b50511b9880a', // свой собственный токен
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-52', options: {
+    authorization: '4d3c9e1d-cc98-4110-97fa-b50511b9880a',
+    'Content-Type': 'application/json'
+  }
 }
 
 // карточки "из коробки"
