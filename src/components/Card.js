@@ -47,10 +47,10 @@ export class Card {
     this._elementImage.alt = `Фотография: ${this._name}`;
     this._elementTitle.textContent = this._name;
 
-    this.myLike = this._likes.some((like) => like.id === this._myId)
+    this.myLike = this._likes.some((like) => like._id === this._myId)
     this._counterLikes.textContent = this._likes.length
 
-    if (this.myLike) {
+    if (!!this.myLike) {
       this._elementLikeButton.classList.add('element__like-button_active')
     }
 
@@ -85,6 +85,7 @@ export class Card {
       this._handleCardClick(this)
     })
     this._elementLikeButton.addEventListener('click', () => {
+      console.log(22222, this);
       this._handleCardLike(this)
     })
     if (!this._isMyOwnCard) {

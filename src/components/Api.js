@@ -15,7 +15,6 @@ export class Api {
     }
   }
 
-  // getInitialCards
   getAddingPictures() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
@@ -23,9 +22,6 @@ export class Api {
       }
     })
       .then(rez => this._checkResponse(rez))
-      .catch((err) => {
-        console.log(err);
-      })
   }
 
   addItem({ name, link }) {
