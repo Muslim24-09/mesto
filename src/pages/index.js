@@ -135,6 +135,7 @@ profileAvatarBtn.addEventListener('click', () => {
 Promise.all([api.getUserInfo(), api.getAddingPictures()])
   .then(rez => {
     const [infoUser, startCards] = rez
+    console.log(33, startCards);
     userInfo.setUserInfo({ username: infoUser.name, about: infoUser.about, avatar: infoUser.avatar, _id: infoUser._id })
     section = new Section(startCards, (item) => {
       const newItem = new Card(item, userInfo.getUserId(), '.element__template', handleCardClick, handleOpenPopupConfirm, handleCardLike)

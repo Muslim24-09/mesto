@@ -23,7 +23,6 @@ export class FormValidator {
     this._classForm = classForm;
 
     this._inputList = Array.from(this._classForm.querySelectorAll(this._inputSelector)); // поиск всех инпутов формы
-    // this._errorList = Array.from(this._classForm.querySelectorAll(this._formError));
 
     this._saveButton = this._classForm.querySelector(this._saveButtonSelector); // кнопка формы
   }

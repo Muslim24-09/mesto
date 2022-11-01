@@ -3,7 +3,6 @@ export class Api {
   _options;
 
   constructor({ baseUrl, options }) {
-    console.log(333, options);
     this._baseUrl = baseUrl,
       this._options = options
   }
@@ -17,6 +16,7 @@ export class Api {
   }
 
   getAddingPictures() {
+
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._options
     })
