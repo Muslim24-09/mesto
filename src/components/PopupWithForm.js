@@ -17,7 +17,7 @@ export class PopupWithForm extends Popup {
     this._buttonSubmit = this._popupForm.querySelector('.form__save-button')
     this._defaultBtnName = this._buttonSubmit.textContent
   }
-  // меняем id на name
+
   getInputValues() {
     this._formValues = {};
     this._inputList.forEach(input => {

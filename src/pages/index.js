@@ -17,7 +17,7 @@ export const api = new Api(authorisationData)
 export const picturePopup = new PicturePopup('#pictures-popup')
 picturePopup.setEventListeners()
 
-const userInfo = new UserInfo({ username: '.profile__name', about: '.profile__about', avatar: '.profile__avatar' })
+const userInfo = new UserInfo({ name: '.profile__name', about: '.profile__about', avatar: '.profile__avatar' })
 
 
 // попап удаления карточки
@@ -51,9 +51,9 @@ popupAddItem.setEventListeners()
 // попап редактирования профиля
 const popupProfile = new PopupWithForm('#popup-profile', (data) => {
   popupProfile.renderLoader(true)
-  api.updateUserInfo({ username: data.username, about: data.about })
+  api.updateUserInfo({ name: data.name, about: data.about })
     .then((newData) => {
-      userInfo.updateUserInfo(newData)
+      userInfo.setUserInfo(newData) //name
       popupProfile.close()
     })
     .catch((err) => console.error(err))
@@ -67,7 +67,7 @@ const popupAvatar = new PopupWithForm('.popup_change-avatar', (avatar) => {
   popupAvatar.renderLoader(true)
   api.updateUserAvatar(avatar)
     .then((newData) => {
-      userInfo.updateUserAvatar(newData)
+      userInfo.setUserInfo(newData)
       popupAvatar.close()
     })
     .catch(() => alert('Пожалуйста, укажите ссылку на картинку'))
@@ -92,7 +92,7 @@ editorBtn.addEventListener('click', () => {
   popupProfile.open()
 
   const profileData = userInfo.getUserInfo()
-  nameInput.value = profileData.username
+  nameInput.value = profileData.name
   aboutInput.value = profileData.about
 
   profileValidator.resetValidation()
@@ -135,8 +135,7 @@ profileAvatarBtn.addEventListener('click', () => {
 Promise.all([api.getUserInfo(), api.getAddingPictures()])
   .then(rez => {
     const [infoUser, startCards] = rez
-    console.log(33, startCards);
-    userInfo.setUserInfo({ username: infoUser.name, about: infoUser.about, avatar: infoUser.avatar, _id: infoUser._id })
+    userInfo.setUserInfo({ name: infoUser.name, about: infoUser.about, avatar: infoUser.avatar, _id: infoUser._id })
     section = new Section(startCards, (item) => {
       const newItem = new Card(item, userInfo.getUserId(), '.element__template', handleCardClick, handleOpenPopupConfirm, handleCardLike)
       return newItem.generateCard()

@@ -85,7 +85,6 @@ export class Card {
       this._handleCardClick(this)
     })
     this._elementLikeButton.addEventListener('click', () => {
-      console.log(22222, this);
       this._handleCardLike(this)
     })
     if (!this._isMyOwnCard) {

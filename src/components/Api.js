@@ -66,12 +66,12 @@ export class Api {
       .then(rez => this._checkResponse(rez))
   }
 
-  updateUserInfo({ username, about }) {
+  updateUserInfo({ name, about }) {
       return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._options,
       body: JSON.stringify({
-        name: `${username}`,
+        name: `${name}`,
         about: `${about}`
       })
     })

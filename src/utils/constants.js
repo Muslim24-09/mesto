@@ -47,8 +47,6 @@ export const addtBtn = document.querySelector('.profile__add-button')
 
 
 export const formCreator = document.querySelector('[name="add__profile"]')
-// export const profileName = document.querySelector('.profile__name')
-// export const profileAbout = document.querySelector('.profile__about')
 
 
 export const titlePic = document.querySelector('.popup__pictures-title')

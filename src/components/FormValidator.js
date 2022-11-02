@@ -15,7 +15,6 @@ export class FormValidator {
     this._inputSelector = params.inputSelector;
     this._saveButtonSelector = params.saveButtonSelector;
     this._inactiveButtonClass = params.inactiveButtonClass;
-
     this._errorClass = params.inputErrorClass;
     this._formError = params.formError
 
@@ -34,7 +33,7 @@ export class FormValidator {
 
   _restartError() {
     this._inputList.forEach((input) => {
-      const errorElement = this._classForm.querySelector(`.form__input-${input.name}-error`)
+      const errorElement = this._classForm.querySelector(`.form__input-${input.id}-error`)
       this._hideError(input, errorElement)
     })
   }
@@ -42,7 +41,6 @@ export class FormValidator {
   resetValidation() {
     if (this._saveButton) {
       this._disableSubmitButton()
-
       this._restartError();
     }
   }
@@ -58,8 +56,7 @@ export class FormValidator {
   }
 
   _toggleInputError(inputElement) {
-    const errorElement = this._classForm.querySelector(`.form__input-${inputElement.name}-error`)
-
+    const errorElement = this._classForm.querySelector(`.form__input-${inputElement.id}-error`)
     if (!errorElement) {
       return;
     }
